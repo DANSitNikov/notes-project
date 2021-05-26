@@ -3,7 +3,7 @@ import Menu from "../components/menu/Menu";
 import Wrapper from "../components/wrapper/Wrapper";
 import {useState} from "react";
 
-const notepad = () => {
+const Notepad = () => {
   const [item, setItem] = useState(1);
 
   return (
@@ -14,5 +14,5 @@ const notepad = () => {
   );
 };
 
-export default notepad;
+export default Notepad;
 

@@ -3,11 +3,20 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import CheckCircleOutlineRoundedIcon from '@material-ui/icons/CheckCircleOutlineRounded';import FavoriteIcon from '@material-ui/icons/Favorite';
 import NotesIcon from '@material-ui/icons/Notes';
-import {Grid} from "@material-ui/core";
+import {Button, Grid} from "@material-ui/core";
+import styled from "styled-components";
+import {useAuthState} from "react-firebase-hooks/auth";
+import {auth} from "../../firebase";
 
 interface PropsType {
   setItem: (num: number) => void,
 }
+
+const SignOut = styled(Button)`
+  margin: 20px auto;
+  background-color: whitesmoke;
+  color: black;
+`;
 
 const Menu: React.FC<PropsType> = (props) => {
   const { setItem } = props;
@@ -19,6 +28,7 @@ const Menu: React.FC<PropsType> = (props) => {
 
   return (
     <Grid item xs={2}>
+      <SignOut onClick={() => auth.signOut()}>Sign out</SignOut>
       <Tabs
         value={value}
         orientation="vertical"
