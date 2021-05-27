@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Note from "./card/Note";
 import {auth, db} from "../../firebase";
 import {useAuthState} from "react-firebase-hooks/auth";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 
 const Container = styled.div`
   overflow-y: scroll;
@@ -24,7 +24,12 @@ export interface NoteType {
   id?: string,
 }
 
-const AllNotes = () => {
+interface PropsType {
+  searchNote: string
+}
+
+const AllNotes: React.FC<PropsType> = (props) => {
+  const { searchNote } = props;
   const [user] = useAuthState(auth);
   const [notes, setNotes] = useState<Array<NoteType>>([]);
 
@@ -48,14 +53,21 @@ const AllNotes = () => {
     <Container>
       {
         notes
-        && notes.map((note) => (
-          <Note
-            key={note.id}
-            id={note.id as string}
-            name={note.name}
-            date={note.timestamp?.toDate().getTime()}
-          />
-        ))
+        && notes.map((note) => {
+          if (!note.name.toLowerCase()
+            .includes(searchNote.toLowerCase())) {
+            return;
+          }
+
+          return (
+            <Note
+              key={note.id}
+              id={note.id as string}
+              name={note.name}
+              date={note.timestamp?.toDate().getTime()}
+            />
+          )
+        })
       }
     </Container>
   )

@@ -1,11 +1,10 @@
-import {Button, IconButton, InputBase, Paper} from "@material-ui/core";
+import {Button, IconButton, Paper} from "@material-ui/core";
 import ChangeHistoryIcon from "@material-ui/icons/ChangeHistory";
 import DetailsIcon from "@material-ui/icons/Details";
 import SearchIcon from "@material-ui/icons/Search";
 import React, {useState} from "react";
 import AllNotes from "../allNotes/AllNotes";
 import styled from "styled-components";
-import Link from 'next/link'
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 const SearchAdd = styled.div`
@@ -33,6 +32,7 @@ interface PropsType {
 
 const Notes: React.FC<PropsType> = (props) => {
   const { setItem } = props;
+  const [searchNote, setSearchNote] = useState<string>('');
   const [showedList, setShowedList] = useState(false);
 
   const chooseCategory = () => {
@@ -54,6 +54,9 @@ const Notes: React.FC<PropsType> = (props) => {
         <Paper component="form" style={{width: '450px'}}>
           <Input
             placeholder="Search note"
+            onChange={(e) =>
+              setSearchNote(e.target.value)}
+            value={searchNote}
           />
           <IconButton
             aria-label="search"
@@ -69,7 +72,7 @@ const Notes: React.FC<PropsType> = (props) => {
         </IconButton>
       </SearchAdd>
       <br/>
-      <AllNotes />
+      <AllNotes searchNote={searchNote} />
     </div>
   );
 };

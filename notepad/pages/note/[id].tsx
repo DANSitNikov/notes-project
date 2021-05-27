@@ -2,30 +2,43 @@ import {auth, db} from "../../firebase";
 import {useAuthState} from "react-firebase-hooks/auth";
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
-import {route} from "next/dist/next-server/server/router";
 import {NoteType} from "../../components/allNotes/AllNotes";
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import {IconButton} from "@material-ui/core";
+import Link from 'next/link';
+import styled from "styled-components";
 
-export async function getServerSideProps(context: any) {
-  // const [user] = useAuthState(auth);
+const Container = styled.div`
+  position: relative;
+`;
 
-  const notes = await db
-    .collection('users')
-    .doc('4SoXVTF3ktasGXcQqsxfPsA9Ws03')
-    .collection('notes')
-    .doc(context.query.id)
-    .get();
+const Back = styled(IconButton)`
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  background-color: whitesmoke !important;
+  color: black !important;
+`;
 
-  console.log(notes, 'nooooooteeeees');
+const Name = styled.h2`
+  text-align: center;
+`;
 
-  return {
-    props: {
-      //notes,
-      data: 'data'
-    },
-  };
-}
+const NoteContent = styled.p`
+  margin: 20px auto;
+  width: 500px;
+  height: 70vh;
+  overflow-y: scroll;
+  
+  ::-webkit-scrollbar{
+    display: none;
+  }
 
-const Note = (props: any) => {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+`;
+
+const Note = () => {
   const [user] = useAuthState(auth);
   const router = useRouter();
   const [noteData, setNoteData] = useState<NoteType>();
@@ -43,15 +56,20 @@ const Note = (props: any) => {
   }, []);
 
   return (
-    <div>
-      <h2>
+    <Container>
+      <Link href='/'>
+        <Back>
+          <ArrowBackIcon />
+        </Back>
+      </Link>
+      <Name>
         Name: {' '}
         {noteData?.name}
-      </h2>
-      <p>
+      </Name>
+      <NoteContent>
         {noteData?.note}
-      </p>
-    </div>
+      </NoteContent>
+    </Container>
   );
 };
 
