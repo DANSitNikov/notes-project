@@ -47,7 +47,7 @@ const AllNotes: React.FC<PropsType> = (props) => {
 
       setNotes(newNotes.reverse());
     });
-  }, []);
+  }, [user]);
 
   return (
     <Container>
@@ -65,6 +65,8 @@ const AllNotes: React.FC<PropsType> = (props) => {
               id={note.id as string}
               name={note.name}
               date={note.timestamp?.toDate().getTime()}
+              notes={notes}
+              setNotes={setNotes}
             />
           )
         })

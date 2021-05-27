@@ -29,6 +29,7 @@ const NoteContent = styled.p`
   width: 500px;
   height: 70vh;
   overflow-y: scroll;
+  font-size: 16px;
   
   ::-webkit-scrollbar{
     display: none;
@@ -67,7 +68,9 @@ const Note = () => {
         {noteData?.name}
       </Name>
       <NoteContent>
-        {noteData?.note}
+        <pre>
+          {noteData?.note}
+        </pre>
       </NoteContent>
     </Container>
   );

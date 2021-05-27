@@ -20,10 +20,26 @@ interface PropsType {
   setItem: (num: number) => void,
 }
 
+const Input = styled.input`
+  outline: none;
+  border: none;
+  margin-left: 20px;
+`;
+
+const TextArea = styled.textarea`
+  width: 500px;
+  height: 400px;
+  margin: 40px 0;
+  outline: none;
+  border: none;
+  resize: none;
+  white-space: pre-line;
+`;
+
 const AddNote: React.FC<PropsType> = (props) => {
   const { setItem } = props;
-  const [name, setName] = useState<string>();
-  const [note, setNote] = useState<string>();
+  const [name, setName] = useState<string>('');
+  const [note, setNote] = useState<string>('');
   const [user] = useAuthState(auth);
 
   const sendMessage = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -44,14 +60,14 @@ const AddNote: React.FC<PropsType> = (props) => {
       <h2>Add new note</h2>
       <Form>
         <label htmlFor="name">Name</label>
-        <input
+        <Input
           onChange={(e) => setName(e.target.value)}
           name="name"
           placeholder="name"
           value={name}
         />
         <br/>
-        <textarea
+        <TextArea
           value={note}
           name="note"
           onChange={(e) => setNote(e.target.value)}
