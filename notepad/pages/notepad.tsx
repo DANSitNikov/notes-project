@@ -1,4 +1,4 @@
-import {Grid, withStyles} from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import Menu from "../components/menu/Menu";
 import Wrapper from "../components/wrapper/Wrapper";
 import {useState} from "react";
@@ -9,7 +9,7 @@ const Notepad = () => {
   return (
     <Grid container>
       <Menu setItem={setItem}/>
-      <Wrapper item={item}/>
+      <Wrapper item={item} setItem={setItem}/>
     </Grid>
   );
 };

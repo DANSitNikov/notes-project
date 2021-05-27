@@ -11,12 +11,12 @@ const Container = styled.main`
 `;
 
 const LoginButton = styled(Button)`
-  width: fit-content;
-  margin: 20px;
-  padding: 5px 10px;
-  color: white;
-  font-size: 20px;
-  background: #606770;
+  width: fit-content !important;
+  margin: 20px !important;
+  padding: 5px 10px !important;
+  color: white !important;
+  font-size: 20px !important;
+  background: #606770 !important;
 `;
 
 const Login = () => {

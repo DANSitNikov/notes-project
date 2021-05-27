@@ -13,9 +13,9 @@ interface PropsType {
 }
 
 const SignOut = styled(Button)`
-  margin: 20px auto;
-  background-color: whitesmoke;
-  color: black;
+  margin: 20px auto !important;
+  background-color: whitesmoke !important;
+  color: black !important;
 `;
 
 const Menu: React.FC<PropsType> = (props) => {
@@ -27,7 +27,7 @@ const Menu: React.FC<PropsType> = (props) => {
   };
 
   return (
-    <Grid item xs={2}>
+    <Grid item xs={2} style={{textAlign: 'center'}}>
       <SignOut onClick={() => auth.signOut()}>Sign out</SignOut>
       <Tabs
         value={value}
