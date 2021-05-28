@@ -3,6 +3,7 @@ import {Grid} from "@material-ui/core";
 import Notes from "../notes";
 import ToDos from "../todos";
 import AddNote from "../addNote";
+import AddToDo from "../addToDo";
 
 interface PropsType {
   item: number,
@@ -20,11 +21,15 @@ const Wrapper: React.FC<PropsType> = (props) => {
       }
       {
         item === 2
-        && <ToDos />
+        && <ToDos setItem={setItem} />
       }
       {
         item === 3
-        && <AddNote setItem={setItem}/>
+        && <AddNote setItem={setItem} />
+      }
+      {
+        item === 4
+        && <AddToDo setItem={setItem} />
       }
     </Grid>
   );

@@ -42,13 +42,14 @@ const AddNote: React.FC<PropsType> = (props) => {
   const [note, setNote] = useState<string>('');
   const [user] = useAuthState(auth);
 
-  const sendMessage = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const sendNote = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     db.collection('users').doc(user?.uid).collection('notes').add({
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       name: name,
       note: note,
+      category: null
     });
 
     setName('');
@@ -76,7 +77,7 @@ const AddNote: React.FC<PropsType> = (props) => {
         <SubmitButton
           disabled={!name || !note}
           onClick={async (e) => {
-            await sendMessage(e);
+            await sendNote(e);
             setItem(1);
           }}
           type="submit"

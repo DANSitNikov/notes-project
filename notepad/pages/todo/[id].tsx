@@ -1,12 +1,12 @@
-import {auth, db} from "../../firebase";
-import {useAuthState} from "react-firebase-hooks/auth";
-import {useRouter} from "next/router";
-import {useEffect, useState} from "react";
-import {NoteType} from "../../components/allNotes/AllNotes";
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import {IconButton} from "@material-ui/core";
-import Link from 'next/link';
+import React, {useEffect, useState} from "react";
+import Link from "next/link";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import styled from "styled-components";
+import {IconButton} from "@material-ui/core";
+import {useAuthState} from "react-firebase-hooks/auth";
+import {auth, db} from "../../firebase";
+import {useRouter} from "next/router";
+import {NoteType} from "../../components/allNotes/AllNotes";
 
 const Container = styled.div`
   position: relative;
@@ -24,36 +24,21 @@ const Name = styled.h2`
   text-align: center;
 `;
 
-const NoteContent = styled.pre`
-  margin: 20px auto;
-  width: 500px;
-  height: 70vh;
-  overflow-y: scroll;
-  font-size: 16px;
-  
-  ::-webkit-scrollbar{
-    display: none;
-  }
-
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-`;
-
-const Note = () => {
+const ToDo: React.FC = () => {
   const [user] = useAuthState(auth);
   const router = useRouter();
-  const [noteData, setNoteData] = useState<NoteType>();
+  const [toDoData, setToDoData] = useState<any>();
 
   useEffect(() => {
     db
       .collection("users")
       .doc(user?.uid)
-      .collection('notes')
+      .collection('todos')
       .doc(router.query.id as any)
       .get()
       .then((querySnapshot) => {
-        setNoteData(querySnapshot.data() as NoteType);
-    });
+        setToDoData(querySnapshot.data() as any);
+      });
   }, []);
 
   return (
@@ -65,13 +50,10 @@ const Note = () => {
       </Link>
       <Name>
         Name: {' '}
-        {noteData?.name}
+        {toDoData?.name}
       </Name>
-      <NoteContent>
-        {noteData?.note.trim()}
-      </NoteContent>
     </Container>
   );
 };
 
-export default Note;
+export default ToDo;
