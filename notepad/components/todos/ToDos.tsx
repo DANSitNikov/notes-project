@@ -1,7 +1,12 @@
+import Filter from "../filter";
+import {useState} from "react";
+
 const ToDos = () => {
+  const [name] = useState('All to-dos');
+
   return (
     <div>
-      to dos
+      <Filter name={name} />
     </div>
   );
 };

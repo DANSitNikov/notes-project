@@ -1,6 +1,6 @@
 import { Grid } from "@material-ui/core";
-import Menu from "../components/menu/Menu";
-import Wrapper from "../components/wrapper/Wrapper";
+import Menu from "../components/menu";
+import Wrapper from "../components/wrapper";
 import {useState} from "react";
 
 const Notepad = () => {

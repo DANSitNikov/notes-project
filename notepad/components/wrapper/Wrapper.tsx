@@ -1,8 +1,8 @@
 import React from "react";
 import {Grid} from "@material-ui/core";
-import Notes from "../notes/Notes";
-import ToDos from "../todos/ToDos";
-import AddNote from "../addNote/AddNote";
+import Notes from "../notes";
+import ToDos from "../todos";
+import AddNote from "../addNote";
 
 interface PropsType {
   item: number,

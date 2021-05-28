@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app'
 import {useAuthState} from "react-firebase-hooks/auth";
 import {auth, db} from "../firebase";
 import { useEffect } from 'react';
-import Loading from "../components/loading/Loading";
+import Loading from "../components/loading";
 import Login from "./login";
 
 function MyApp({ Component, pageProps }: AppProps) {

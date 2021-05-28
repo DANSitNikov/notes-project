@@ -69,7 +69,7 @@ const Note = () => {
       </Name>
       <NoteContent>
         <pre>
-          {noteData?.note}
+          {noteData?.note.trim()}
         </pre>
       </NoteContent>
     </Container>

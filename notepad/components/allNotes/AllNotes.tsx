@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Note from "./card/Note";
+import Note from "./card";
 import {auth, db} from "../../firebase";
 import {useAuthState} from "react-firebase-hooks/auth";
 import React, {useEffect, useState} from "react";

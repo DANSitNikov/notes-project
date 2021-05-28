@@ -1,11 +1,10 @@
-import {Button, IconButton, Paper} from "@material-ui/core";
-import ChangeHistoryIcon from "@material-ui/icons/ChangeHistory";
-import DetailsIcon from "@material-ui/icons/Details";
+import {IconButton, Paper} from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import React, {useState} from "react";
-import AllNotes from "../allNotes/AllNotes";
+import AllNotes from "../allNotes";
 import styled from "styled-components";
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import Filter from "../filter";
 
 const SearchAdd = styled.div`
   display: flex;
@@ -32,6 +31,7 @@ interface PropsType {
 
 const Notes: React.FC<PropsType> = (props) => {
   const { setItem } = props;
+  const [name] = useState('All notes');
   const [searchNote, setSearchNote] = useState<string>('');
   const [showedList, setShowedList] = useState(false);
 
@@ -41,13 +41,7 @@ const Notes: React.FC<PropsType> = (props) => {
 
   return (
     <div>
-      <Button
-        variant="contained"
-        endIcon={showedList ? <ChangeHistoryIcon/> : <DetailsIcon/>}
-        onClick={chooseCategory}
-      >
-        All notes
-      </Button>
+      <Filter name={name} />
       <br/>
       <br/>
       <SearchAdd>
