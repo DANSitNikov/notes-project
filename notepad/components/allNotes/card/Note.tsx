@@ -43,6 +43,16 @@ const Note: React.FC<PropsType> = React.memo((props) => {
     router.push(`/note/${id}`)
   };
 
+  const shortName = (name: string) => {
+    const testName = name;
+
+    if (testName.length > 35) {
+      return testName.slice(0, 36) + '...';
+    }
+
+    return testName;
+  }
+
   const deleteNote = async () => {
     await db
       .collection('users')
@@ -71,7 +81,7 @@ const Note: React.FC<PropsType> = React.memo((props) => {
       >
         <CardContent>
           <Typography variant="h5" component="h2">
-            {name}
+            {shortName(name)}
           </Typography>
           <Typography color="textSecondary" gutterBottom style={{color: 'white'}}>
             {date ? moment(date).format('MMM Do YY') : '...'}

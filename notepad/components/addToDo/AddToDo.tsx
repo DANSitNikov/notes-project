@@ -15,10 +15,12 @@ const Form = styled.form``;
 
 const Input = styled.input`
   outline: none;
-  border: none;
-  padding: 10px;
   width: 300px;
   border-radius: 5px;
+  padding: 10px 5px;
+  color: #cbcaca;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid #444444;
 `;
 
 const SubmitButton = styled(Button)`
@@ -53,7 +55,7 @@ const AddToDo: React.FC<PropsType> = (props) => {
     <Container>
       <h2>Add new to-do</h2>
       <Form>
-        <label htmlFor="todo">Name</label>
+        <label htmlFor="todo">To-do</label>
         <br/>
         <br/>
         <Input

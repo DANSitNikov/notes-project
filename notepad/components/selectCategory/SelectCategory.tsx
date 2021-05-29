@@ -12,7 +12,6 @@ const SelectBlock = styled.select`
   border: none;
   background-color: rgba(0, 0, 0, 0);
   width: 150px;
-  padding: 10px;
   color: #cbcaca;
   font-size: 18px;
   cursor: pointer;

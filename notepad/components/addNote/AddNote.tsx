@@ -22,18 +22,23 @@ interface PropsType {
 
 const Input = styled.input`
   outline: none;
-  border: none;
   margin-left: 20px;
+  padding: 10px 5px;
+  color: #cbcaca;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid #444444;
 `;
 
 const TextArea = styled.textarea`
-  width: 500px;
+  width: 550px;
   height: 400px;
   margin: 40px 0;
   outline: none;
-  border: none;
+  border: 1px solid #444444;
   resize: none;
   white-space: pre-line;
+  background-color: rgba(0, 0, 0, 0);
+  color: #cbcaca;
 `;
 
 const AddNote: React.FC<PropsType> = (props) => {
@@ -49,7 +54,8 @@ const AddNote: React.FC<PropsType> = (props) => {
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       name: name,
       note: note,
-      category: null
+      category: 'No category',
+      important: false,
     });
 
     setName('');
@@ -72,6 +78,7 @@ const AddNote: React.FC<PropsType> = (props) => {
           value={note}
           name="note"
           onChange={(e) => setNote(e.target.value)}
+          placeholder="add new note"
         />
         <br/>
         <SubmitButton

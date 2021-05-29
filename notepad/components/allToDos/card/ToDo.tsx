@@ -50,6 +50,16 @@ const ToDo: React.FC<PropsType> = (props) => {
     router.push(`/todo/${id}`);
   };
 
+  const shortName = (name: string) => {
+    const testName = name;
+
+    if (testName.length > 20) {
+      return testName.slice(0, 21) + '...';
+    }
+
+    return testName;
+  }
+
   const deleteToDo = async () => {
     await db
       .collection('users')
@@ -72,7 +82,7 @@ const ToDo: React.FC<PropsType> = (props) => {
       >
         <CardContent>
           <Name>
-            {name}
+            {shortName(name)}
           </Name>
         </CardContent>
       </CardName>
