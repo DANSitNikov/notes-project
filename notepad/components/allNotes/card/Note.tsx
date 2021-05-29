@@ -74,7 +74,7 @@ const Note: React.FC<PropsType> = React.memo((props) => {
             {name}
           </Typography>
           <Typography color="textSecondary" gutterBottom style={{color: 'white'}}>
-            {date ? moment(date).format('LT') : '...'}
+            {date ? moment(date).format('MMM Do YY') : '...'}
           </Typography>
         </CardContent>
       </CardName>

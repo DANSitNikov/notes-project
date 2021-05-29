@@ -25,7 +25,8 @@ const Container = styled.div`
 `;
 
 const ToDos = styled.div`
-  width: 270px;
+  min-width: 260px;
+  width: 500px;
 `;
 
 const AllToDos: React.FC<PropsType> = (props) => {
@@ -58,7 +59,7 @@ const AllToDos: React.FC<PropsType> = (props) => {
           && toDos.map((toDo) => {
             if (!toDo.name.toLowerCase()
                 .includes(searchToDo.toLowerCase())
-              || toDo.status === 'completed'
+              || toDo.completed === true
             ) {
               return;
             }
@@ -68,6 +69,8 @@ const AllToDos: React.FC<PropsType> = (props) => {
                 key={toDo.id}
                 name={toDo.name}
                 id={toDo.id}
+                toDos={toDos}
+                setToDos={setToDos}
               />
             );
           })
@@ -80,7 +83,7 @@ const AllToDos: React.FC<PropsType> = (props) => {
           && toDos.map((toDo) => {
             if (!toDo.name.toLowerCase()
                 .includes(searchToDo.toLowerCase())
-              || toDo.status === 'not completed'
+              || toDo.completed === false
             ) {
               return;
             }
@@ -90,6 +93,8 @@ const AllToDos: React.FC<PropsType> = (props) => {
                 key={toDo.id}
                 name={toDo.name}
                 id={toDo.id}
+                toDos={toDos}
+                setToDos={setToDos}
               />
             );
           })

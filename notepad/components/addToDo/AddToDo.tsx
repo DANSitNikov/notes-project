@@ -31,8 +31,7 @@ const SubmitButton = styled(Button)`
 const AddToDo: React.FC<PropsType> = (props) => {
   const {setItem} = props;
   const [name, setName] = useState<string>('');
-  const [category, setCategory] = useState<string | null>(null);
-  const [status, setStatus] = useState<string>('not completed');
+  const [important, setImportant] = useState<boolean>(false);
   const [user] = useAuthState(auth);
 
   const sendToDo = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -41,8 +40,10 @@ const AddToDo: React.FC<PropsType> = (props) => {
     db.collection('users').doc(user?.uid).collection('todos').add({
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       name: name,
-      category: category,
-      status: status,
+      category: null,
+      completed: false,
+      important: important,
+      remarks: '',
     });
 
     setName('');
