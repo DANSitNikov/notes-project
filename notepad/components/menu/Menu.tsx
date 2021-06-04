@@ -2,10 +2,11 @@ import React from 'react';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import CheckCircleOutlineRoundedIcon from '@material-ui/icons/CheckCircleOutlineRounded';import FavoriteIcon from '@material-ui/icons/Favorite';
+import MoodIcon from '@material-ui/icons/Mood';
+import MoodBadIcon from '@material-ui/icons/MoodBad';
 import NotesIcon from '@material-ui/icons/Notes';
 import {Button, Grid} from "@material-ui/core";
 import styled from "styled-components";
-import {useAuthState} from "react-firebase-hooks/auth";
 import {auth} from "../../firebase";
 
 interface PropsType {
@@ -48,6 +49,12 @@ const Menu: React.FC<PropsType> = (props) => {
           icon={<CheckCircleOutlineRoundedIcon />}
           label="TO-DOS"
           onClick={() => setItem(2)}
+        />
+        <Tab
+          style={{minWidth: '0 !important', color: 'white'}}
+          icon={<MoodIcon />}
+          label="MOOD"
+          onClick={() => setItem(5)}
         />
       </Tabs>
     </Grid>

@@ -70,7 +70,6 @@ const ToDo: React.FC<PropsType> = (props) => {
       .then(() => console.log('Successfully deleted!'))
       .catch((err) => console.log(err));
 
-    console.log(toDos);
     const newToDos = toDos.filter((note) => note.id !== id);
     setToDos(newToDos);
   }

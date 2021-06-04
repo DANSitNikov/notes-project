@@ -4,6 +4,7 @@ import Notes from "../notes";
 import ToDos from "../todos";
 import AddNote from "../addNote";
 import AddToDo from "../addToDo";
+import Mood from "../mood";
 
 interface PropsType {
   item: number,
@@ -30,6 +31,10 @@ const Wrapper: React.FC<PropsType> = (props) => {
       {
         item === 4
         && <AddToDo setItem={setItem} />
+      }
+      {
+        item === 5
+        && <Mood setItem={setItem} />
       }
     </Grid>
   );
